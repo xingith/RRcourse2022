@@ -1,2 +1,2 @@
-# RRcourse2022
-This is a course repository for Reproducible Research 2022
+# Reproducible Research repo template
+This is the starting point for individual RR course repos.
