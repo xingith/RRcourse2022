@@ -1,0 +1,184 @@
+---
+title: "Assignment 2"
+author: "Kai Xing"
+date: "3/29/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+load("../Data/season_1.RData")
+```
+
+# Suits - Introduction
+
+<img alt="Suits Logo.png" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Suits_Logo.png/250px-Suits_Logo.png" decoding="async" width="250" height="69" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Suits_Logo.png/375px-Suits_Logo.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Suits_Logo.png/500px-Suits_Logo.png 2x" data-file-width="941" data-file-height="258">
+
+***
+
+### Overview
+
+(From [Wikipedia](https://en.wikipedia.org/wiki/List_of_Suits_episodes)) Suits is an American television drama series created by *Aaron Korsh*, which premiered on June 23, 2011 on the USA Network. It revolves around *Mike Ross* (*Patrick J. Adams*), who begins working as a law associate for *Harvey Specter* (*Gabriel Macht*), despite never attending law school. The show focuses on *Harvey* and *Mike* managing to close cases, while maintaining *Mike*'s secret.
+
+The series was renewed for an eighth season on January 30, 2018.[1] In January 2019, the series was renewed for a ninth and final season which premiered on July 17, 2019.[2] During the course of the series, 134 episodes of Suits aired over nine seasons, between June 23, 2011, and September 25, 2019.
+
+***
+
+
+### U.S. viewers per episode for all seasons (millions)
+
+<table class="wikitable" style="text-align:center"><tbody><tr><th colspan="2" rowspan="2" style="padding-left:.8em;padding-right:.8em">Season</th><th colspan="16" style="padding-left:.8em;padding-right:.8em">Episode number</th></tr><tr><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th><th scope="col">7</th><th scope="col">8</th><th scope="col">9</th><th scope="col">10</th><th scope="col">11</th><th scope="col">12</th><th scope="col">13</th><th scope="col">14</th><th scope="col">15</th><th scope="col">16</th></tr><tr><th style="background-color:#5FDFCF;width:10px"></th><th scope="row">1</th><td style="width:35px">4.64</td><td style="width:35px">3.89</td><td style="width:35px">4.53</td><td style="width:35px">4.38</td><td style="width:35px">4.38</td><td style="width:35px">4.44</td><td style="width:35px">4.03</td><td style="width:35px">3.96</td><td style="width:35px">4.45</td><td style="width:35px">3.82</td><td style="width:35px">3.96</td><td style="width:35px">3.47</td><td data-sort-value="" class="table-na" colspan="4" style="background: #ececec; color: #2C2C2C; vertical-align: middle; text-align: center;">N/A</td></tr><tr><th style="background-color:#666666;width:10px"></th><th scope="row">2</th><td style="width:35px">3.47</td><td style="width:35px">3.80</td><td style="width:35px">3.88</td><td style="width:35px">3.70</td><td style="width:35px">3.72</td><td style="width:35px">3.89</td><td style="width:35px">3.41</td><td style="width:35px">3.42</td><td style="width:35px">4.00</td><td style="width:35px">4.48</td><td style="width:35px">3.57</td><td style="width:35px">3.75</td><td style="width:35px">3.36</td><td style="width:35px">3.07</td><td style="width:35px">2.90</td><td style="width:35px">3.20</td></tr><tr><th style="background-color:#E62020;width:10px"></th><th scope="row">3</th><td style="width:35px">2.93</td><td style="width:35px">2.89</td><td style="width:35px">2.48</td><td style="width:35px">2.99</td><td style="width:35px">2.79</td><td style="width:35px">2.76</td><td style="width:35px">2.79</td><td style="width:35px">3.52</td><td style="width:35px">2.95</td><td style="width:35px">3.16</td><td style="width:35px">2.28</td><td style="width:35px">2.28</td><td style="width:35px">2.35</td><td style="width:35px">2.53</td><td style="width:35px">2.50</td><td style="width:35px">2.40</td></tr><tr><th style="background-color:#242124;width:10px"></th><th scope="row">4</th><td style="width:35px">2.50</td><td style="width:35px">2.65</td><td style="width:35px">2.76</td><td style="width:35px">2.42</td><td style="width:35px">2.33</td><td style="width:35px">2.70</td><td style="width:35px">2.81</td><td style="width:35px">2.59</td><td style="width:35px">2.59</td><td style="width:35px">2.76</td><td style="width:35px">1.87</td><td style="width:35px">1.67</td><td style="width:35px">1.46</td><td style="width:35px">1.70</td><td style="width:35px">1.80</td><td style="width:35px">1.55</td></tr><tr><th style="background-color:#3D468B;width:10px"></th><th scope="row">5</th><td style="width:35px">2.13</td><td style="width:35px">2.27</td><td style="width:35px">2.16</td><td style="width:35px">2.38</td><td style="width:35px">2.10</td><td style="width:35px">2.16</td><td style="width:35px">2.08</td><td style="width:35px">2.31</td><td style="width:35px">2.30</td><td style="width:35px">2.34</td><td style="width:35px">1.74</td><td style="width:35px">1.51</td><td style="width:35px">1.71</td><td style="width:35px">1.58</td><td style="width:35px">1.73</td><td style="width:35px">1.71</td></tr><tr><th style="background-color:#E4E4E1;width:10px"></th><th scope="row">6</th><td style="width:35px">1.85</td><td style="width:35px">1.65</td><td style="width:35px">1.78</td><td style="width:35px">1.81</td><td style="width:35px">1.51</td><td style="width:35px">1.68</td><td style="width:35px">1.83</td><td style="width:35px">1.88</td><td style="width:35px">1.87</td><td style="width:35px">1.92</td><td style="width:35px">1.37</td><td style="width:35px">1.53</td><td style="width:35px">1.28</td><td style="width:35px">1.21</td><td style="width:35px">1.25</td><td style="width:35px">1.13</td></tr><tr><th style="background-color:#9B2D36;width:10px"></th><th scope="row">7</th><td style="width:35px">1.40</td><td style="width:35px">1.36</td><td style="width:35px">1.41</td><td style="width:35px">1.41</td><td style="width:35px">1.29</td><td style="width:35px">1.47</td><td style="width:35px">1.35</td><td style="width:35px">1.51</td><td style="width:35px">1.64</td><td style="width:35px">1.68</td><td style="width:35px">1.18</td><td style="width:35px">1.06</td><td style="width:35px">0.95</td><td style="width:35px">0.99</td><td style="width:35px">1.09</td><td style="width:35px">1.07</td></tr><tr><th style="background-color:#50566E;width:10px"></th><th scope="row">8</th><td style="width:35px">1.27</td><td style="width:35px">1.18</td><td style="width:35px">1.16</td><td style="width:35px">1.09</td><td style="width:35px">1.15</td><td style="width:35px">1.22</td><td style="width:35px">1.13</td><td style="width:35px">1.30</td><td style="width:35px">1.07</td><td style="width:35px">1.08</td><td style="width:35px">0.82</td><td style="width:35px">0.91</td><td style="width:35px">0.77</td><td style="width:35px">0.78</td><td style="width:35px">0.69</td><td style="width:35px">0.74</td></tr><tr><th style="background-color:#C6930A;width:10px"></th><th scope="row">9</th><td style="width:35px">1.04</td><td style="width:35px">1.04</td><td style="width:35px">0.94</td><td style="width:35px">1.00</td><td style="width:35px">0.96</td><td style="width:35px">1.05</td><td style="width:35px">1.07</td><td style="width:35px">0.97</td><td style="width:35px">0.96</td><td style="width:35px">0.86</td><td data-sort-value="" class="table-na" colspan="6" style="background: #ececec; color: #2C2C2C; vertical-align: middle; text-align: center;">N/A</td></tr></tbody></table>
+
+***
+
+### Ratings for season 9 
+
+<table class="wikitable plainrowheaders sortable jquery-tablesorter" style="text-align:center;width:99%;">
+<caption><style data-mw-deduplicate="TemplateStyles:r1015390333">.mw-parser-output .sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;white-space:nowrap}</style><span class="sr-only">Viewership and ratings per episode of <i>Suits</i></span>
+</caption>
+<thead><tr>
+<th scope="col" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending"><abbr title="Number">No.</abbr>
+</th>
+<th scope="col" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">Title
+</th>
+<th scope="col" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">Air date</th>
+<th scope="col" data-sort-type="number" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending"><a href="/wiki/Nielsen_ratings" title="Nielsen ratings">Rating</a><br><span class="nowrap">(18–49)</span></th>
+<th scope="col" data-sort-type="number" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">Viewers<br>(millions)</th>
+<th scope="col" data-sort-type="number" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">DVR<br><span class="nowrap">(18–49)</span></th>
+<th scope="col" data-sort-type="number" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">DVR viewers<br>(millions)</th>
+<th scope="col" data-sort-type="number" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">Total<br><span class="nowrap">(18–49)</span></th>
+<th scope="col" data-sort-type="number" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">Total viewers<br>(millions)
+</th></tr></thead><tbody>
+<tr>
+<th scope="row" style="text-align:center;">1
+</th>
+<td style="text-align:left">"<a href="#ep125">Everything's Changed</a>"
+</td>
+<td style="text-align:left">July 17, 2019</td>
+<td>0.2</td>
+<td>1.04<sup id="cite_ref-9.01_4-1" class="reference"><a href="#cite_note-9.01-4">[4]</a></sup></td>
+<td>0.3</td>
+<td>1.24</td>
+<td>0.5</td>
+<td>2.28<sup id="cite_ref-17" class="reference"><a href="#cite_note-17">[17]</a></sup>
+</td></tr><tr>
+<th scope="row" style="text-align:center;">2
+</th>
+<td style="text-align:left">"<a href="#ep126">Special Master</a>"
+</td>
+<td style="text-align:left">July 24, 2019</td>
+<td>0.2</td>
+<td>1.04<sup id="cite_ref-9.02_5-1" class="reference"><a href="#cite_note-9.02-5">[5]</a></sup></td>
+<td>0.3</td>
+<td>1.08</td>
+<td>0.5</td>
+<td>2.12<sup id="cite_ref-18" class="reference"><a href="#cite_note-18">[18]</a></sup>
+</td></tr><tr>
+<th scope="row" style="text-align:center;">3
+</th>
+<td style="text-align:left">"<a href="#ep127">Windmills</a>"
+</td>
+<td style="text-align:left">July 31, 2019</td>
+<td>0.2</td>
+<td>0.94<sup id="cite_ref-9.03_6-1" class="reference"><a href="#cite_note-9.03-6">[6]</a></sup></td>
+<td>0.3</td>
+<td>1.17</td>
+<td>0.5</td>
+<td>2.11<sup id="cite_ref-19" class="reference"><a href="#cite_note-19">[19]</a></sup>
+</td></tr><tr>
+<th scope="row" style="text-align:center;">4
+</th>
+<td style="text-align:left">"<a href="#ep128">Cairo</a>"
+</td>
+<td style="text-align:left">August 7, 2019</td>
+<td>0.2</td>
+<td>1.00<sup id="cite_ref-9.04_7-1" class="reference"><a href="#cite_note-9.04-7">[7]</a></sup></td>
+<td data-sort-value="" style="background: #ececec; color: #2C2C2C; vertical-align: middle; text-align: center;" class="table-na">N/A</td>
+<td>1.06</td>
+<td data-sort-value="" style="background: #ececec; color: #2C2C2C; vertical-align: middle; text-align: center;" class="table-na">N/A</td>
+<td>2.06<sup id="cite_ref-20" class="reference"><a href="#cite_note-20">[20]</a></sup>
+</td></tr><tr>
+<th scope="row" style="text-align:center;">5
+</th>
+<td style="text-align:left">"<a href="#ep129">If the Shoe Fits</a>"
+</td>
+<td style="text-align:left">August 14, 2019</td>
+<td>0.2</td>
+<td>0.96<sup id="cite_ref-9.05_8-1" class="reference"><a href="#cite_note-9.05-8">[8]</a></sup></td>
+<td>0.3</td>
+<td>1.22</td>
+<td>0.5</td>
+<td>2.18<sup id="cite_ref-21" class="reference"><a href="#cite_note-21">[21]</a></sup>
+</td></tr><tr>
+<th scope="row" style="text-align:center;">6
+</th>
+<td style="text-align:left">"<a href="#ep130">Whatever It Takes</a>"
+</td>
+<td style="text-align:left">August 21, 2019</td>
+<td>0.2</td>
+<td>1.05<sup id="cite_ref-9.06_9-1" class="reference"><a href="#cite_note-9.06-9">[9]</a></sup></td>
+<td>0.2</td>
+<td>0.94</td>
+<td>0.4</td>
+<td>1.99<sup id="cite_ref-22" class="reference"><a href="#cite_note-22">[22]</a></sup><sup id="cite_ref-ratings_23-0" class="reference"><a href="#cite_note-ratings-23">[a]</a></sup>
+</td></tr><tr>
+<th scope="row" style="text-align:center;">7
+</th>
+<td style="text-align:left">"<a href="#ep131">Scenic Route</a>"
+</td>
+<td style="text-align:left">September 4, 2019</td>
+<td>0.2</td>
+<td>1.07<sup id="cite_ref-9.07_10-1" class="reference"><a href="#cite_note-9.07-10">[10]</a></sup></td>
+<td>0.2</td>
+<td>0.85</td>
+<td>0.4</td>
+<td>1.92<sup id="cite_ref-24" class="reference"><a href="#cite_note-24">[23]</a></sup><sup id="cite_ref-ratings_23-1" class="reference"><a href="#cite_note-ratings-23">[a]</a></sup>
+</td></tr><tr>
+<th scope="row" style="text-align:center;">8
+</th>
+<td style="text-align:left">"<a href="#ep132">Prisoner's Dilemma</a>"
+</td>
+<td style="text-align:left">September 11, 2019</td>
+<td>0.2</td>
+<td>0.97<sup id="cite_ref-9.08_11-1" class="reference"><a href="#cite_note-9.08-11">[11]</a></sup></td>
+<td>0.2</td>
+<td>0.84</td>
+<td>0.3</td>
+<td>1.80<sup id="cite_ref-25" class="reference"><a href="#cite_note-25">[24]</a></sup><sup id="cite_ref-ratings_23-2" class="reference"><a href="#cite_note-ratings-23">[a]</a></sup>
+</td></tr><tr>
+<th scope="row" style="text-align:center;">9
+</th>
+<td style="text-align:left">"<a href="#ep133">Thunder Away</a>"
+</td>
+<td style="text-align:left">September 18, 2019</td>
+<td>0.2</td>
+<td>0.96<sup id="cite_ref-9.09_12-1" class="reference"><a href="#cite_note-9.09-12">[12]</a></sup></td>
+<td>0.2</td>
+<td>0.92</td>
+<td>0.4</td>
+<td>1.88<sup id="cite_ref-26" class="reference"><a href="#cite_note-26">[25]</a></sup><sup id="cite_ref-ratings_23-3" class="reference"><a href="#cite_note-ratings-23">[a]</a></sup>
+</td></tr><tr>
+<th scope="row" style="text-align:center;">10
+</th>
+<td style="text-align:left">"<a href="#ep134">One Last Con</a>"
+</td>
+<td style="text-align:left">September 25, 2019</td>
+<td>0.2</td>
+<td>0.86<sup id="cite_ref-9.10_13-1" class="reference"><a href="#cite_note-9.10-13">[13]</a></sup></td>
+<td>0.2</td>
+<td>0.93</td>
+<td>0.4</td>
+<td>1.79<sup id="cite_ref-27" class="reference"><a href="#cite_note-27">[26]</a></sup><sup id="cite_ref-ratings_23-4" class="reference"><a href="#cite_note-ratings-23">[a]</a></sup>
+</td></tr></tbody><tfoot></tfoot></table>
+***
+
+![](C:\Users\xingk\OneDrive - student.uw.edu.pl\Desktop\GIT\RRcourse2022\RR_Mar_30_31/suit.PNG)
+From the above graph, it is clear to see that U.S. viewers for Suits have been decreased season by season, but it was still a top-three ratings earner for USA Network, in both the demo and total audience size.
+
+
+
+
+
+
+
+
