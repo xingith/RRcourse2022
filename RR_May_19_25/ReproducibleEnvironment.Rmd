@@ -132,8 +132,8 @@ library(stringr)
 And now we can, instead, do this:
 ```{r}
 library("groundhog")
-pkgs <- c("rvest", "haven")
-groundhog.library(pkgs, date = "2019-09-01")
+pkgs <- c("rvest", "stringi")
+groundhog.library(pkgs, date = "2021-09-01")
 ```
 And `groundhog` will pick the most recent versions of packages that existed at that date.
 
